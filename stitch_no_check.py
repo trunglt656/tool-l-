@@ -88,7 +88,7 @@ time.sleep(5)
 run_adb_command("adb shell input swipe 712 2183 261 2183 500")
 time.sleep(3)
 print("Nhấn nút ghép nối")
-run_adb_command("adb shell input tap 595 2165")  # Nhấn ghép nối
+run_adb_command("adb shell input tap 817 2162")  # Nhấn ghép nối
 print("Kéo Timeline")
 time.sleep(5)
 swipe_full_timeline()  # Kéo full timeline
@@ -144,12 +144,12 @@ time.sleep(4)
 run_adb_command('adb shell input tap 618 2210')#them sp 
 time.sleep(4)
 # run_adb_command('adb shell input tap 381 561')#click them hasta
-run_adb_command('adb shell input tap 381 561')#click them hastag
-run_adb_command('adb shell input tap 150 780')#click them hastag 
-run_adb_command('adb shell input tap 381 561')#click them hastag
-run_adb_command('adb shell input tap 172 882')#click them hastag 
-run_adb_command('adb shell input tap 381 561')#click them hastag
-run_adb_command('adb shell input tap 171 980')#click them hastag 
+# run_adb_command('adb shell input tap 381 561')#click them hastag
+# run_adb_command('adb shell input tap 150 780')#click them hastag 
+# run_adb_command('adb shell input tap 381 561')#click them hastag
+# run_adb_command('adb shell input tap 172 882')#click them hastag 
+# run_adb_command('adb shell input tap 381 561')#click them hastag
+# run_adb_command('adb shell input tap 171 980')#click them hastag 
 # run_adb_command('adb shell input tap 400 550') #them hastag
 # time.sleep(4)
 # run_adb_command('adb shell input tap 160 666')# chon hastag
