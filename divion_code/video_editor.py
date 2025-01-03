@@ -5,17 +5,50 @@ import subprocess
 from tkinter import filedialog, messagebox
 
 
-def edit_video(input_video_path, input_audio_path, log_callback):
+# def edit_video(input_video_path, input_audio_path, log_callback):
+    # try:
+    #     video = VideoFileClip(input_video_path)
+    #     audio = AudioFileClip(input_audio_path)
+    #     log_callback(f"Đang chỉnh sửa video với audio nhạc được chọn...")
+
+    #     if audio.duration > video.duration:
+    #         audio = audio.subclipped(0, video.duration)
+
+    #     video_with_new_audio = video.with_audio(audio)
+
+
+    #     output_folder = r"D:\Affiliate\tool_sp\download_video\done_video"
+    #     if not os.path.exists(output_folder):
+    #         os.makedirs(output_folder)
+
+    #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    #     output_video_path = os.path.join(output_folder, f"edited_video_{timestamp}.mp4")
+
+    #     video_with_new_audio.write_videofile(output_video_path, codec="libx264", audio_codec="aac")
+    #     log_callback(f"Thành công", f"Video đã được chỉnh sửa và lưu tại:\n{output_video_path}")
+    #     print("Thành công", f"Video đã được chỉnh sửa và lưu tại:\n{output_video_path}")
+    #     return output_video_path
+    #     # send_video_to_phone(output_video_path, log_callback)
+    # except Exception as e:
+    #     messagebox.showerror("Lỗi", f"Đã xảy ra lỗi khi chỉnh sửa video: {e}")
+
+
+
+def edit_video(input_video_path, input_audio_path, add_music, log_callback):
     try:
         video = VideoFileClip(input_video_path)
-        audio = AudioFileClip(input_audio_path)
-        log_callback(f"Đang chỉnh sửa video với audio nhạc được chọn...")
 
-        if audio.duration > video.duration:
-            audio = audio.subclipped(0, video.duration)
+        if add_music:
+            log_callback(f"Đang chỉnh sửa video với audio nhạc được chọn...")
+            audio = AudioFileClip(input_audio_path)
 
-        video_with_new_audio = video.with_audio(audio)
+            if audio.duration > video.duration:
+                audio = audio.subclipped(0, video.duration)
 
+            video_with_new_audio = video.with_audio(audio)
+        else:
+            log_callback("Giữ nguyên âm thanh gốc của video...")
+            video_with_new_audio = video
 
         output_folder = r"D:\Affiliate\tool_sp\download_video\done_video"
         if not os.path.exists(output_folder):
@@ -27,11 +60,9 @@ def edit_video(input_video_path, input_audio_path, log_callback):
         video_with_new_audio.write_videofile(output_video_path, codec="libx264", audio_codec="aac")
         log_callback(f"Thành công", f"Video đã được chỉnh sửa và lưu tại:\n{output_video_path}")
         print("Thành công", f"Video đã được chỉnh sửa và lưu tại:\n{output_video_path}")
-        
-        send_video_to_phone(output_video_path, log_callback)
+        return output_video_path
     except Exception as e:
         messagebox.showerror("Lỗi", f"Đã xảy ra lỗi khi chỉnh sửa video: {e}")
-
 # Hàm gửi video qua ADB
 def send_video_to_phone(video_path, log_callback):
     try:

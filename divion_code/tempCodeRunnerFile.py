@@ -1,1 +1,1 @@
-add_product_description
+both

@@ -14,21 +14,33 @@ def open_library_video(log_callback):
 def upload_video(log_callback):
     log_callback(f"Đang tải video lên...")
     run_adb_command("adb shell input tap 1015 157")  # Nhấn nút upload
-    time.sleep(3)
+    time.sleep(2)
+
+    # Chọn đăng video(tùy tk)
+    run_adb_command("adb shell input tap 486 2000")  # Nhấn nút upload
+    time.sleep(4)
+
+
     run_adb_command("adb shell input tap 865 1875")  # Chọn thư viện
     time.sleep(3)
     run_adb_command("adb shell input tap 145 471")  # Chọn video đầu tiên
     time.sleep(5)
-    run_adb_command("adb shell input tap 945 2253")  # Nhấn Tiếp theo
+    run_adb_command("adb shell input tap 945 2253")  # nhấn tiếp theotheo
     time.sleep(3)
 
     # nhấn cái thiện video 
-    run_adb_command("adb shell input tap 999 546")  # Nhấn Tiếp theo
-    time.sleep(3)
+    run_adb_command("adb shell input tap 999 546")  # Nhấn làm đẹp 
+    time.sleep(10)
 
 
     run_adb_command("adb shell input tap 969 2189")  # Nhấn Tiếp theo lần nữa
     time.sleep(3)
+    # cho nhanh , co the xóa
+    run_adb_command("adb shell input tap 821 685")  # Nhấn thêm sản phẩm
+    time.sleep(4)
+    run_adb_command("adb shell input tap 1041 171")  # Chọn link
+    time.sleep(2)
+    run_adb_command("adb shell input tap 533 601")  # Nhấn vào ô nhập link
 
 def add_product_link(link, log_callback):
     log_callback(f"Đang thêm sản phẩm bằng link...")

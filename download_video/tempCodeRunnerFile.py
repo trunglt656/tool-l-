@@ -37,7 +37,14 @@ def input_text_by_character(text):
 def open_shopee():
     print("Đang mở ứng dụng Shopee...")
     run_adb_command("adb shell monkey -p com.shopee.vn -c android.intent.category.LAUNCHER 1")
-    time.sleep(2)
+    time.sleep(3)
+
+
+# Mở ứng dụng thư viện video
+def open_library_video():
+    print("Đang mở ứng dụng Thư viện video...")
+    run_adb_command("adb shell am start -n com.miui.gallery/.activity.HomePageActivity")
+    time.sleep(8)
 
 # Nhấn nút upload video
 def upload_video():
@@ -197,6 +204,8 @@ def start_process():
     edit_video(video_path, audio_file_path)
 
     # Sau khi video đã chỉnh sửa xong, thực hiện các bước đăng lên Shopee
+    open_shopee()
+    open_library_video()
     open_shopee()
     upload_video()
     add_product_link(product_link)
